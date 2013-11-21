@@ -13,6 +13,7 @@ end
 
 group :test do
   gem "shoulda-matchers"
+  gem 'capybara'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,8 +28,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
