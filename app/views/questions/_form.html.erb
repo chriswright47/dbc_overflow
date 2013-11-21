@@ -1,12 +1,10 @@
 <%= form_for @question do |f| %>
   <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => 'title' %>
   </div>
 
   <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :placeholder => 'question text' %>
   </div>
 
   <div>
