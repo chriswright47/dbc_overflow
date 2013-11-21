@@ -9,5 +9,5 @@ require 'faker'
 user = User.create(username: 'Chris', email: 'chris@dbc.com', password: '1234', phase: 3)
 
 25.times do |i|
-  question = Question.create(title: Faker::Lorem.words(4), body: Faker::Lorem.sentences(3), user_id: 1)
+  question = Question.create(title: Faker::Lorem.words(4).join(' ') , body: Faker::Lorem.sentences(3).join(' '), user_id: 1)
 end
