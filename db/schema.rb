@@ -13,28 +13,36 @@
 
 ActiveRecord::Schema.define(:version => 20131120220002) do
 
-  create_table "comments", :force => true do |t|
-    t.string   "body"
-    t.integer  "post_id"
+  create_table "answers", :force => true do |t|
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "posts", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "title"
-    t.string   "body"
     t.integer  "question_id"
+    t.string   "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "taggings", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "tag_id"
+  create_table "comments", :force => true do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "questions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "tags", :force => true do |t|
@@ -54,10 +62,11 @@ ActiveRecord::Schema.define(:version => 20131120220002) do
   end
 
   create_table "votes", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "voteable_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "voteable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end

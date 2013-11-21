@@ -10,4 +10,10 @@ class Question < ActiveRecord::Base
 
   belongs_to :user
 
+  validates :title, presence: true
+  validates :title, uniqueness: true
+  validates :body, presence: true
+  validates :body, uniqueness: true
+
+
 end
