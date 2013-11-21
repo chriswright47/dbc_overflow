@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :votes
 
   validates :email, :uniqueness => true
+  validates :password, :presence => true
 
-  has_secure_password
+  has_secure_password, :validations => false
 end
