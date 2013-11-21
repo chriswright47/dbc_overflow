@@ -11,3 +11,54 @@
  *= require_self
  *= require_tree .
  */
+.container{
+
+  width: 600px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: deeppink;
+}
+
+.navbar {
+  background-color: black;
+  height: 50px;
+  padding-top: 25px;
+  padding-left: 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding-right: 20px;
+}
+
+.navbar a:hover {
+  color: deeppink;
+}
+
+.create a {
+  color: black;
+  text-decoration: none;
+  text-align: center;
+
+}
+
+.create a:hover {
+  color: deeppink;
+}

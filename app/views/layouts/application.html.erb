@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div class='navbar'>
+    <%= link_to 'Home', '/' %>
+    <%= link_to 'Create Question', new_question_path %>
+    <%= link_to 'Create User', new_user_path %>
+  </div>
+<div class="container">
 <%= yield %>
-
+</div>
 </body>
 </html>

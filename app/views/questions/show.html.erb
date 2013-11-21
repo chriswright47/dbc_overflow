@@ -1,8 +1,12 @@
-<div class="container">
+<div>
 <h1> Question </h1>
 <%= @question.title %><br>
 <%= link_to @user.username, @user %><br>
 <%= @question.body %><br>
+<%= link_to 'Edit Question', edit_question_path(@question) %>
+<%= form_for(@question, method: :delete) do |f| %>
+<%= f.submit 'Delete Question' %>
+<% end %>
 <ul>
   <% @answers.each do |answer| %><br>
   <li>

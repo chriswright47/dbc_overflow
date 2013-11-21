@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-
   end
 
   def show
@@ -17,7 +16,7 @@ class QuestionsController < ApplicationController
 
   def create
     question = Question.new(params[:question])
-    user = User.new(username: "test")
+    user = User.find_or_create_by_username("Chris")
     user.password = '1234'
     user.save
     user.questions << question
@@ -26,12 +25,19 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
   end
 
   def update
+    question = Question.find(params[:id])
+    question.update_attributes(params[:question])
+    redirect_to question_path(question)
   end
 
   def destroy
+    question = Question.find(params[:id])
+    question.destroy
+    redirect_to '/'
   end
 
 end
