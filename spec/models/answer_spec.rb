@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Answer do
-  let(:answer) { Answer.create(body: "Answer Body")}
+  let(:answer) { Answer.new(body: "Answer Body")}
 
   it "can be created" do
     expect(answer).to_not be_nil
@@ -16,7 +16,7 @@ describe Answer do
   end
 
   it "has a vote" do
-    answer.votes.create()
+    answer.votes.new()
     expect(answer.votes.first).to be_an_instance_of(Vote)
   end
 
@@ -25,8 +25,11 @@ describe Answer do
   end
 
   it "has a comment" do
-    answer.comments.create(body: "Comment Body")
+    answer.comments.new(body: "Comment Body")
     expect(answer.comments.first).to be_an_instance_of(Comment)
   end
+
+  it { should validate_presence_of(:body) }
+  it { should validate_presence_of(:question_id) }
 
 end
