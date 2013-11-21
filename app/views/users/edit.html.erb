@@ -1,0 +1,30 @@
+<h1>Edit Profile for <%= @user.username %></h1>
+
+<%= form_for @user do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<div class="errors_explanation">
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%= link_to "Cancel", user_path(@user) %>
