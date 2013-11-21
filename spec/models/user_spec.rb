@@ -1,7 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { User.create(username: "username", email: "email@email.com", password: "password", phase: 3) }
+  let(:user) { user = User.new(username: "username", email: "unique@unique.com", password: "password" , phase: 3) }
+
+  it { should validate_uniqueness_of(:email) }
+  it { should allow_mass_assignment_of(:username) }
+  it { should allow_mass_assignment_of(:email) }
+  it { should allow_mass_assignment_of(:password) }
+  it { should allow_mass_assignment_of(:phase) }
 
   it 'can be created' do
     expect(user).to_not be_nil
@@ -34,5 +40,7 @@ describe User do
   it 'has an array of votes' do
     expect(user.votes).to be_a(Array)
   end
+
+
 
 end
