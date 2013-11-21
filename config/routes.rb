@@ -1,5 +1,6 @@
 DBCOverflow::Application.routes.draw do
 
+  get '/' => 'questions#index'
   resources :users
 
   resources :questions
