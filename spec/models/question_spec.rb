@@ -44,4 +44,10 @@ describe Question do
     expect(question.comments.first).to be_an_instance_of(Comment)
   end
 
+  it { should validate_presence_of(:title) }
+  it { should validate_uniqueness_of(:title) }
+  it { should validate_presence_of(:body) }
+  it { should validate_uniqueness_of(:body) }
+
+
 end

@@ -9,6 +9,7 @@ class Answer < ActiveRecord::Base
 
   validates :body, presence: true
   validates :question_id, presence: true
+  validates_uniqueness_of :body, scope: :question_id
 end
 
 
