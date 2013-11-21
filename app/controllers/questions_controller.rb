@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
 
   def create
     question = Question.new(params[:question])
-    user = User.new(username: "test")
+    user = User.new(username: "Chris")
     user.password = '1234'
     user.save
     user.questions << question
