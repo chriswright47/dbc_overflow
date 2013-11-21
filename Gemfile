@@ -13,6 +13,8 @@ end
 
 group :test do
   gem "shoulda-matchers"
+  gem 'capybara'
+  gem 'launchy'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +29,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 
 
 

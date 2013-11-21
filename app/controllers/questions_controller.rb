@@ -9,13 +9,20 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @user = @question.user
     @answers = @question.answers
-
   end
 
   def new
+    @question = Question.new
   end
 
   def create
+    question = Question.new(params[:question])
+    user = User.new(username: "test")
+    user.password = '1234'
+    user.save
+    user.questions << question
+    # current_user.questions << question
+    redirect_to question
   end
 
   def edit
