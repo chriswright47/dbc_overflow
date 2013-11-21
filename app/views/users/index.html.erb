@@ -1,2 +1,9 @@
 <h1>Users Index</h1>
 
+<% @users.each do |user| %>
+	<p><%= link_to "#{user.username}", user_path(user) %></p>
+<% end %>
+
+<% if signed_in? %>
+	<%= link_to "Logout", signout_path, method: :delete %>
+<% end %>
