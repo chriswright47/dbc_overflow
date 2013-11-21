@@ -23,8 +23,8 @@ describe User do
     expect(user.phase).to be_a(Fixnum)
   end
 
-  it 'has an array of posts' do
-    expect(user.posts).to be_a(Array)
+  it 'has an array of questions' do
+    expect(user.questions).to be_a(Array)
   end
 
   it 'has an array of comments' do
