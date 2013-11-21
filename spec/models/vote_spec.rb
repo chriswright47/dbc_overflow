@@ -11,7 +11,7 @@ describe Vote do
   end
 
   describe "a vote with a question type" do
-    let(:question) { Question.create }
+    let(:question) { Question.create(title: "question title", body: "question body", user_id: 1) }
 
     it "has a question" do
       question.votes << vote
@@ -20,7 +20,7 @@ describe Vote do
   end
 
   describe "a vote with an answer type" do
-    let(:answer) { Answer.create }
+    let(:answer) { Answer.create(body: "answer body", question_id: 1, user_id: 1) }
 
     it "has an answer" do
       answer.votes << vote
