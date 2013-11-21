@@ -1,0 +1,15 @@
+<div class="container">
+<h1> Question </h1>
+<%= @question.title %><br>
+<%= link_to @user.username, @user %><br>
+<%= @question.body %><br>
+<ul>
+  <% @answers.each do |answer| %><br>
+  <li>
+  <%= answer.body %><br>
+</li>
+  <% end %>
+</ul>
+
+
+</div>
