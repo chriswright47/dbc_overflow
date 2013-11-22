@@ -1,18 +1,18 @@
-class AnswersController < ApplicationController 
+class AnswersController < ApplicationController
 
 	def new
 		@question = Question.find(params[:question_id])
 	end
 
 	def create
-		question = Question.find(params[:question_id]) 
+		question = Question.find(params[:question_id])
 		answer = Answer.new(params[:answer])
-		current_user.answers << answer 
-		question.answers << answer 
+		current_user.answers << answer
+		question.answers << answer
 		redirect_to question_path(question)
 	end
 
-	def edit 
+	def edit
 		@answer = Answer.find(params[:id])
 		@question = @answer.question
 	end
@@ -29,6 +29,13 @@ class AnswersController < ApplicationController
 		answer = Answer.find(params[:id])
 		answer.destroy
 		redirect_to question_path(question)
+	end
 
+	def vote
+		answer = Answer.find(params[:id])
+		vote = Vote.new(user_id: session[:user_id])
+		answer.votes << vote
+		# answer.votes.create(user_id: current_user.id)
+		redirect_to question_path(answer.question)
 	end
 end

@@ -20,6 +20,9 @@
 <%= link_to 'Answer Question', new_question_answer_path(@question) %>
 <ul>
   <% @answers.each do |answer| %><br>
+  <form action="/answers/<%= answer.id %>/vote" method='post'>
+  <button type='submit'>upvote this answer</button>
+</form>
   <li>
   <%= answer.body %><br>
 </li>
