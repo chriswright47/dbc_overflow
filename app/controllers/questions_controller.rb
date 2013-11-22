@@ -16,16 +16,15 @@ class QuestionsController < ApplicationController
 
   def create
     question = Question.new(params[:question])
-    user = User.find_or_create_by_username("Chris")
-    user.password = '1234'
-    user.save
-    user.questions << question
-    # current_user.questions << question
+    current_user.questions << question
     redirect_to question
   end
 
   def edit
     @question = Question.find(params[:id])
+    if current_user != @question.user
+      redirect_to question_path(@question)
+    end
   end
 
   def update
