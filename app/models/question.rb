@@ -15,5 +15,8 @@ class Question < ActiveRecord::Base
   validates :body, presence: true
   validates :body, uniqueness: true
 
+  def vote_count
+    self.votes.count
+  end
 
 end

@@ -42,4 +42,13 @@ class QuestionsController < ApplicationController
     redirect_to '/'
   end
 
+  def vote
+    # creates a new vote for this question
+    question = Question.find(params[:id])
+    question.votes.create(user_id: current_user.id)
+    flash[:notice] = "You have just upvoted this question."
+    redirect_to question_path(question)
+  end
+
+
 end

@@ -1,8 +1,15 @@
 <div>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <%= "#{pluralize(@question.vote_count, 'vote')}" %>
 <h1> Question </h1>
 <%= @question.title %><br>
 <%= link_to @user.username, @user %><br>
 <%= @question.body %><br>
+<% if signed_in? %>
+<%= button_to 'Vote', @question, :method => "post" %>
+<% end %>
 
 <% if @user == current_user %>
 	<%= link_to 'Edit Question', edit_question_path(@question) %>
