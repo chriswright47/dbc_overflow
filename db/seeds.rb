@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
-7.times do
+6.times do
 	user = User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: '1234', phase: 3)
 end
 
@@ -18,5 +18,5 @@ User.create(username: "missy", email: "missy@dbc.com", password: "1234", phase: 
 
 
 25.times do |i|
-  question = Question.create(title: Faker::Company.bs , body: Faker::Company.catch_phrase, user_id: 1)
+  question = Question.create(title: Faker::Company.bs , body: Faker::Company.catch_phrase, user_id: rand(1..10))
 end
