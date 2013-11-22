@@ -9,7 +9,7 @@ DBCOverflow::Application.routes.draw do
 
   post '/questions/:id' => 'questions#vote'
 
-  post '/answers/:answer_id/vote' => 'answers#vote'
+  post 'questions/:question_id/answers/:id' => 'answers#vote'
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup', to: 'users#new', via: :get

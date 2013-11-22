@@ -32,7 +32,7 @@ class AnswersController < ApplicationController
 	end
 
 	def vote
-		answer = Answer.find(params[:answer_id])
+		answer = Answer.find(params[:id])
 		vote = Vote.new(user_id: session[:user_id])
 		answer.votes << vote
 		# answer.votes.create(user_id: current_user.id)

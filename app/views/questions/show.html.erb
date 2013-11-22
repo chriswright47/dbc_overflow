@@ -17,13 +17,13 @@
 	<%= f.submit 'Delete Question' %>
 	<% end %>
 <% end %>
+<% if signed_in? %>
 <%= link_to 'Answer Question', new_question_answer_path(@question) %>
+<% end %>
 <ul>
   <% @answers.each do |answer| %><br>
   <%= "#{pluralize(answer.vote_count, 'vote')}" %>
-  <form action="/answers/<%= answer.id %>/vote" method='post'>
-  <button type='submit'>upvote this answer</button>
-</form>
+<%= button_to 'upvote this answer', question_answer_path(@question, answer), :method => :post %>
   <li>
   <%= answer.body %><br>
 </li>
