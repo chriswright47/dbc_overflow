@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user
       if @user.authenticate(params[:session][:password])
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        redirect_to questions_path
       else
         @user.errors.add(:password, 'incorrect')
         render :new
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to users_path
+    redirect_to questions_path
   end
 
 end
