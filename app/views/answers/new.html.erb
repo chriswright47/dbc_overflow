@@ -1,0 +1,12 @@
+<h1>Create an Answer</h1>
+	<%= form_for [@question, @question.answers.build] do |f| %>
+		<div>
+			<%= f.label :body %>
+			<%= f.text_area :body %> 
+		</div>
+
+		<div>
+			<%= f.submit :value => "Submit Answer" %>
+		</div>
+		
+<% end %>

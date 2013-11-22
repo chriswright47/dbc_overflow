@@ -8,7 +8,7 @@ feature "A user can create a question" do
     fill_in 'session_email', :with => user.email
     fill_in 'session_password', :with => user.password
     click_button 'Sign In'
-    save_and_open_page
+    # save_and_open_page
     click_link "Create Question"
     fill_in "question_title", :with => "Why can't Alex code"
     fill_in "question_body", :with => "Because he just can't."
