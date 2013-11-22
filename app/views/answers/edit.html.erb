@@ -1,0 +1,12 @@
+<h1>Edit Answer</h1>
+	<%= form_for [@question, @answer] do |f| %>
+		<div>
+			<%= f.label :body %>
+			<%= f.text_area :body %> 
+		</div>
+
+		<div>
+			<%= f.submit %>
+		</div>
+		
+<% end %>

@@ -13,4 +13,8 @@ FactoryGirl.define do
     body "Question Body"
     user_id 1
   end
+
+  factory :answer do 
+    body "Answer Body"
+  end
 end
