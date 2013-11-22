@@ -18,8 +18,9 @@
 	  <% end %>
   </div>
   <div class="site-nav">
-    <%= link_to 'Create Question', new_question_path %>
-    <%= link_to 'Create User', new_user_path %>  	
+  	<% if signed_in? %>
+	    <%= link_to 'Create Question', new_question_path %>
+    <% end %>
   </div>
 	<div class="container">
 <%= yield %>

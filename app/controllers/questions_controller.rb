@@ -12,6 +12,9 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    unless signed_in?
+      redirect_to questions_path
+    end
   end
 
   def create
