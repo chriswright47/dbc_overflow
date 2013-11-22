@@ -27,8 +27,10 @@
   <li>
   <%= answer.body %><br>
 </li>
-<%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %> <br>
-<%= button_to 'Delete Answer', [@question, answer], :method => :delete %>
+<% if answer.user == current_user %>
+	<%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %> <br>
+	<%= button_to 'Delete Answer', [@question, answer], :method => :delete %>
+<% end %>
   <% end %>
 </ul>
 
