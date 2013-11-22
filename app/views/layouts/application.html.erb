@@ -7,12 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class='navbar'>
-    <%= link_to 'Home', '/' %>
-    <%= link_to 'Create Question', new_question_path %>
-    <%= link_to 'Create User', new_user_path %>
+  <div class="top-nav">
+    <%= link_to "DBCOverflow", '/', :class => "home-link" %>
+	  <% if signed_in? %>
+	    <%= link_to "My Profile", user_path(current_user) %>
+	    <%= link_to "Sign Out", signout_path, method: :delete %>
+	  <% else %>
+	    <%= link_to "Sign Up", signup_path %>
+	    <%= link_to "Sign In", signin_path %>
+	  <% end %>
   </div>
-<div class="container">
+  <div class="site-nav">
+  	<% if signed_in? %>
+	    <%= link_to 'Create Question', new_question_path %>
+    <% end %>
+  </div>
+	<div class="container">
 <%= yield %>
 </div>
 </body>
