@@ -11,4 +11,5 @@
 
 <% if @user == current_user %>
 	<%= link_to "Edit", edit_user_path(@user) %>
+	<%= button_to "Delete Account", user_path(@user), :method => :delete %>
 <% end %>
