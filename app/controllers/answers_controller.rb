@@ -31,16 +31,16 @@ class AnswersController < ApplicationController
 		redirect_to question_path(question)
 	end
 
-	def vote
+	def upvote
 		answer = Answer.find(params[:id])
-		answer.votes.create(user_id: current_user, value: 1)
+		answer.votes.create(user_id: current_user.id, value: 1)
 		# answer.votes.create(user_id: current_user.id)
 		redirect_to question_path(answer.question)
 	end
 
 	def downvote
 		answer = Answer.find(params[:id])
-		answer.votes.create(user_id: current_user, value: -1)
+		answer.votes.create(user_id: current_user.id, value: -1)
 		redirect_to question_path(answer.question)
 	end
 end

@@ -7,11 +7,13 @@ DBCOverflow::Application.routes.draw do
     resources :answers, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  post '/questions/:id/upvote' => 'questions#vote'
+  post '/questions/:id/upvote' => 'questions#upvote'
   post '/questions/:id/downvote' => 'questions#downvote'
 
+  post '/answers/:id/downvote' => 'answers#downvote'
+  post '/answers/:id/upvote' => 'answers#upvote'
 
-  post 'questions/:question_id/answers/:id' => 'answers#vote'
+  # post 'questions/:question_id/answers/:id' => 'answers#vote'
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup', to: 'users#new', via: :get

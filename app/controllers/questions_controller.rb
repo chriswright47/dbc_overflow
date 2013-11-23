@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
     redirect_to '/'
   end
 
-  def vote
+  def upvote
     # creates a new vote for this question
     question = Question.find(params[:id])
     question.votes.create(user_id: current_user.id, value: 1)

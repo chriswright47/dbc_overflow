@@ -24,7 +24,8 @@
 <ul>
   <% @answers.each do |answer| %><br>
   <%= "#{pluralize(answer.vote_count, 'vote')}" %>
-<%= button_to 'upvote this answer', question_answer_path(@question, answer), :method => :post %>
+<%= button_to 'upvote answer', "/answers/#{answer.id}/upvote", :method => :post %>
+<%= button_to 'downvote answer', "/answers/#{answer.id}/downvote", :method => :post %>
   <li>
   <%= answer.body %><br>
 </li>
