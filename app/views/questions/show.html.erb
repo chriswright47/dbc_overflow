@@ -17,7 +17,7 @@
     <div class="tags">
       <p><b>tags: </b></p>
       <% @question.tags.each do |tag| %>
-      <p><%= tag.name %></p>
+      <p><%= link_to "#{tag.name}", tag %></p>
       <% end %>
     </div>
     <% end %>
