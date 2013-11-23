@@ -37,6 +37,7 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    @tags = Tag.all
     if current_user != @question.user
       redirect_to question_path(@question)
     end
