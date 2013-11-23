@@ -11,8 +11,59 @@
  *= require_self
  *= require_tree .
  */
+.wide-area {
+  width: 500px;
+  height: 250px;
+}
+.edit-delete {
+  margin-left: 540px;
+}
+
+.wide-title {
+  width: 500px;
+}
+ .tag_box {
+  display: inline-block;
+  padding-right: 10px;
+ }
+
+ .tag_box label {
+  float: right;
+  margin-left: 5px;
+ }
+ .edit{
+  float:left;
+  padding-right: 25px
+}
+ 
+ .float-left {
+  float:left;
+ }
+ .tags p {
+  display:inline;
+  font-style: italic;
+ }
+
+ .clear-fix {
+  clear:both;
+ }
+
+.vote_buttons form {
+  display: inline-block;
+  float:left;
+  padding-right: 10px;
+}
+
+.text {
+  font-size: 100%;
+  padding: 20px;
+}
+
+
 .container{
+  /*text-align: center;*/
   margin:40px auto;
+  margin-top: 80px;
   width: 800px;
   padding: 20px 20px 20px 20px;
   position:relative;
@@ -24,12 +75,13 @@ ul {
 
 .top-nav {
   position:fixed;
+  z-index: 1;
   top:0px;
   left:0px;
   right:0px;
   padding-right:20px;
   padding-left:20px;
-  height:40px;
+  height:60px;
   background-color: black;
   text-align:right;
 }
@@ -44,13 +96,15 @@ ul {
 }
 
 .top-nav a:hover {
-  color: deeppink;
+  color: red;
 }
 
 .site-nav {
-  position:relative;
+
+  position:fixed;
+  z-index: 1;
   margin: -8px -8px 0px -8px;
-  top:40px;
+  top:60px;
   left:0px;
   right:0px;
   padding-right:20px;
@@ -70,7 +124,7 @@ ul {
 }
 
 .site-nav a:hover {
-  color: deeppink;
+  color: red;
 }
 
 .home-link {
@@ -85,5 +139,5 @@ ul {
 }
 
 .create a:hover {
-  color: deeppink;
+  color: red;
 }

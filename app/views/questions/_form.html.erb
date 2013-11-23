@@ -1,11 +1,11 @@
 <% @question.taggings.build.build_tag %>
 <%= form_for @question do |question_form| %>
   <div>
-    <%= question_form.text_field :title, :placeholder => 'title' %>
+    <%= question_form.text_field :title, :placeholder => 'title', class: 'wide-title' %>
   </div>
 
   <div>
-    <%= question_form.text_area :body, :placeholder => 'question text' %>
+    <%= question_form.text_area :body, :placeholder => 'question text', class: 'wide-area'%>
   </div>
 
   <h2>Tags</h2>
