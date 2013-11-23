@@ -1,10 +1,12 @@
 class Question < ActiveRecord::Base
-  attr_accessible :body, :title, :user_id
+  attr_accessible :body, :title, :user_id, :tags_attributes
 
   has_many :votes, as: :voteable
   has_many :comments, as: :commentable
   has_many :taggings
   has_many :tags, :through => :taggings
+
+  accepts_nested_attributes_for :taggings, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
 
   has_many :answers
 
@@ -15,9 +17,9 @@ class Question < ActiveRecord::Base
   validates :body, presence: true
   validates :body, uniqueness: true
 
+
   def vote_count
     value_array = self.votes.map {|vote| vote.value }
-    # value_array = [1,1,1,-1]
     value_array.inject(0, :+)
   end
 

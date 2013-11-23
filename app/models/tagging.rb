@@ -3,4 +3,6 @@ class Tagging < ActiveRecord::Base
 
   belongs_to :question
   belongs_to :tag
+
+  accepts_nested_attributes_for :tag
 end

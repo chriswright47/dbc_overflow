@@ -1,36 +1,45 @@
 class QuestionsController < ApplicationController
 
   def index
-    questions = Question.all
-    hash = {}
-    questions.each { |q| hash[q] = q.vote_count }
-    sorted = hash.sort_by { |q, count| count }
-    @questions = []
-    sorted.each { |q, count| @questions << q }
-    @questions.reverse!
+    @questions = Question.all
+    @questions.sort! { |x, y| y.vote_count <=> x.vote_count }
   end
 
   def show
     @question = Question.find(params[:id])
     @user = @question.user
     @answers = @question.answers
+    @answers.sort! { |x, y| y.vote_count <=> x.vote_count }
   end
 
   def new
     @question = Question.new
+    @tags = Tag.all
     unless signed_in?
       redirect_to questions_path
     end
   end
 
   def create
-    question = Question.new(params[:question])
+    tags = params[:question].extract!(:tags)[:tags]
+
+    question = Question.create(params[:question])
     current_user.questions << question
+
+    if !tags.nil?
+      tag_ids = tags.select { |tag_id, checked| checked == "1" }.keys
+
+      tag_ids.each do |tag_id|
+        question.taggings << Tagging.create(tag_id: tag_id)
+      end
+    end
+
     redirect_to question
   end
 
   def edit
     @question = Question.find(params[:id])
+    @tags = Tag.all
     if current_user != @question.user
       redirect_to question_path(@question)
     end
