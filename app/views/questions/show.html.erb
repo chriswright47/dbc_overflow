@@ -1,8 +1,16 @@
 <div>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <%= "#{pluralize(@question.vote_count, 'vote')}" %>
 <h1> Question </h1>
 <%= @question.title %><br>
 <%= link_to @user.username, @user %><br>
 <%= @question.body %><br>
+<% if signed_in? %>
+<%= button_to 'upvote', "#{@question.id}/upvote", :method => "post" %>
+<%= button_to 'downvote', "#{@question.id}/downvote", :method => "post" %>
+<% end %>
 
 <% if @user == current_user %>
 	<%= link_to 'Edit Question', edit_question_path(@question) %>
@@ -10,9 +18,14 @@
 	<%= f.submit 'Delete Question' %>
 	<% end %>
 <% end %>
+<% if signed_in? %>
 <%= link_to 'Answer Question', new_question_answer_path(@question) %>
+<% end %>
 <ul>
   <% @answers.each do |answer| %><br>
+  <%= "#{pluralize(answer.vote_count, 'vote')}" %>
+<%= button_to 'upvote answer', "/answers/#{answer.id}/upvote", :method => :post %>
+<%= button_to 'downvote answer', "/answers/#{answer.id}/downvote", :method => :post %>
   <li>
   <%= answer.body %><br>
 </li>
