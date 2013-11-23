@@ -20,3 +20,7 @@ User.create(username: "missy", email: "missy@dbc.com", password: "1234", phase: 
 25.times do |i|
   question = Question.create(title: Faker::Company.bs , body: Faker::Company.catch_phrase, user_id: rand(1..10))
 end
+
+10.times do |i|
+	Tag.create(name: "Ruby#{i}", description: "Awesomesauce#{i}")
+end

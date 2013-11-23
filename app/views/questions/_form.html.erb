@@ -1,14 +1,17 @@
-<%= form_for @question do |f| %>
+<% @question.taggings.build.build_tag %>
+<%= form_for @question do |question_form| %>
   <div>
-    <%= f.text_field :title, :placeholder => 'title' %>
+    <%= question_form.text_field :title, :placeholder => 'title' %>
   </div>
 
   <div>
-    <%= f.text_area :body, :placeholder => 'question text' %>
+    <%= question_form.text_area :body, :placeholder => 'question text' %>
   </div>
 
+  <h2>Tags</h2>
+  <%= render :partial => 'tags/form', :locals => { :form => question_form } %>
   <div>
-    <%= f.submit %>
+    <%= question_form.submit %>
   </div>
 
 <% end %>
