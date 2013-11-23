@@ -65,8 +65,11 @@ ActiveRecord::Schema.define(:version => 20131120220002) do
     t.integer  "voteable_id"
     t.integer  "user_id"
     t.string   "voteable_type"
+    t.integer  "value"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "votes", ["user_id", "voteable_id", "voteable_type"], :name => "index_votes_on_user_id_and_voteable_id_and_voteable_type", :unique => true
 
 end

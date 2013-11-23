@@ -12,7 +12,7 @@ end
 
 User.create(username: "chris", email: "chris@dbc.com", password: "1234", phase: 3)
 User.create(username: "chirag", email: "chirag@dbc.com", password: "1234", phase: 3)
-User.create(username: "conner", email: "conner@dbc.com", password: "1234", phase: 3)
+User.create(username: "connor", email: "connor@dbc.com", password: "1234", phase: 3)
 User.create(username: "missy", email: "missy@dbc.com", password: "1234", phase: 3)
 
 
