@@ -1,7 +1,13 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    questions = Question.all
+    hash = {}
+    questions.each { |q| hash[q] = q.vote_count }
+    sorted = hash.sort_by { |q, count| count }
+    @questions = []
+    sorted.each { |q, count| @questions << q }
+    @questions.reverse!
   end
 
   def show
