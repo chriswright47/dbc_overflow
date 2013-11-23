@@ -1,8 +1,8 @@
 <h1>Create an Answer</h1>
 	<%= form_for [@question, @question.answers.build] do |f| %>
 		<div>
-			<%= f.label :body %>
-			<%= f.text_area :body %> 
+			<%#= f.label :body %>
+			<%= f.text_area :body, html: { cols: 100 } %> 
 		</div>
 
 		<div>

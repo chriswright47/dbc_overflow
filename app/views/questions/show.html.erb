@@ -1,45 +1,57 @@
 <div>
-  <% if flash[:notice] %>
+  <div class="span8 text">
+    <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-  <%= "#{pluralize(@question.vote_count, 'vote')}" %>
-<h1> Question </h1>
-<%= @question.title %><br>
-<%= link_to @user.username, @user %><br>
-<%= @question.body %><br>
+    <% end %>
+    <div class="vote_buttons">
+      <% if signed_in? %>
+      <%= button_to 'upvote', "#{@question.id}/upvote", :method => "post" %>
+      <%= button_to 'downvote', "#{@question.id}/downvote", :method => "post" %>
+      <% end %>
+    </div>
+    <%= "#{pluralize(@question.vote_count, 'vote')}" %>
+    <h1 class="clear-fix"><%= @question.title %></h1><br>
+    <%= link_to "#{@user.username}:" , @user %>
+    <%= @question.body %><br><br>
+    <% if @question.tags.length > 0 %>
+    <div class="tags">
+      <p><b>tags: </b></p>
+      <% @question.tags.each do |tag| %>
+      <p><%= tag.name %></p>
+      <% end %>
+    </div>
+    <% end %>
 
-<% @question.tags.each do |tag| %>
-	<p><%= tag.name %></p>
-<% end %>
-
-<% if signed_in? %>
-<%= button_to 'upvote', "#{@question.id}/upvote", :method => "post" %>
-<%= button_to 'downvote', "#{@question.id}/downvote", :method => "post" %>
-<% end %>
-
-<% if @user == current_user %>
-	<%= link_to 'Edit Question', edit_question_path(@question) %>
-	<%= form_for(@question, method: :delete) do |f| %>
-	<%= f.submit 'Delete Question' %>
-	<% end %>
-<% end %>
-<% if signed_in? %>
-<%= link_to 'Answer Question', new_question_answer_path(@question) %>
-<% end %>
-<ul>
-  <% @answers.each do |answer| %><br>
-  <%= "#{pluralize(answer.vote_count, 'vote')}" %>
-<%= button_to 'upvote answer', "/answers/#{answer.id}/upvote", :method => :post %>
-<%= button_to 'downvote answer', "/answers/#{answer.id}/downvote", :method => :post %>
-  <li>
-  <%= answer.body %><br>
-</li>
-<% if answer.user == current_user %>
-	<%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %> <br>
-	<%= button_to 'Delete Answer', [@question, answer], :method => :delete %>
-<% end %>
-  <% end %>
-</ul>
+    <% if signed_in? %>
+    <div class="lead float-left">
+      <%= link_to 'Answer Question', new_question_answer_path(@question) %><br>
+    </div>
+    <% end %>
+    <% if @user == current_user %>
+    <div class='edit-delete'>
+      <div class="edit ">
+        <%= link_to 'Edit Question', edit_question_path(@question) %>
+      </div>
+      <%= form_for(@question, method: :delete) do |f| %>
+      <%= f.submit 'Delete Question' %>
+      <% end %>
+    </div>
+    <% end %>
+    <ul>
+      <% @answers.each do |answer| %><br>
+      <%= "#{pluralize(answer.vote_count, 'vote')}" %>
+      <%= button_to 'upvote answer', "/answers/#{answer.id}/upvote", :method => :post %>
+      <%= button_to 'downvote answer', "/answers/#{answer.id}/downvote", :method => :post %>
+      <li>
+        <%= answer.body %><br>
+      </li>
+      <% if answer.user == current_user %>
+      <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %> <br>
+      <%= button_to 'Delete Answer', [@question, answer], :method => :delete %>
+      <% end %>
+      <% end %>
+    </ul>
+  </div>
 
 
 
