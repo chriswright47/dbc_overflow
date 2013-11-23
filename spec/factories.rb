@@ -19,7 +19,15 @@ FactoryGirl.define do
   end
 
   factory :tag do
-    name "Ruby"
-    description "Only the best programming language ever, no big deal"
+    factory :ruby_tag do
+      name "Ruby"
+      description "Only the best programming language ever, no big deal"
+    end
+
+    factory :javascript_tag do
+      name "Javascript"
+      description "Nasty curly brackets all over the place, but you'll survive"
+    end
+
   end
 end

@@ -3,7 +3,9 @@
 <%= @question.title %><br>
 <%= link_to @user.username, @user %><br>
 <%= @question.body %><br>
-Tags: <%= @question.tags.map { |t| t.name }.join(", ") %>
+<% @question.tags.each do |tag| %>
+	<p><%= tag.name %></p>
+<% end %>
 
 <% if @user == current_user %>
 	<%= link_to 'Edit Question', edit_question_path(@question) %>
