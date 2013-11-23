@@ -45,9 +45,17 @@ class QuestionsController < ApplicationController
   def vote
     # creates a new vote for this question
     question = Question.find(params[:id])
-    question.votes.create(user_id: current_user.id)
+    question.votes.create(user_id: current_user.id, value: 1)
     flash[:notice] = "You have just upvoted this question."
     redirect_to question_path(question)
+  end
+
+  def downvote
+    question = Question.find(params[:id])
+    question.votes.create(user_id: current_user.id, value: -1)
+    flash[:notice] = "You have just downvoted this question."
+    redirect_to question_path(question)
+
   end
 
 

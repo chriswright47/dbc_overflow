@@ -7,7 +7,9 @@ DBCOverflow::Application.routes.draw do
     resources :answers, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  post '/questions/:id' => 'questions#vote'
+  post '/questions/:id/upvote' => 'questions#vote'
+  post '/questions/:id/downvote' => 'questions#downvote'
+
 
   post 'questions/:question_id/answers/:id' => 'answers#vote'
   resources :sessions, only: [:new, :create, :destroy]

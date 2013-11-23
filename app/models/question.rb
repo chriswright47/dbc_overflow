@@ -16,7 +16,9 @@ class Question < ActiveRecord::Base
   validates :body, uniqueness: true
 
   def vote_count
-    self.votes.count
+    value_array = self.votes.map {|vote| vote.value }
+    # value_array = [1,1,1,-1]
+    value_array.inject(0, :+)
   end
 
 end
