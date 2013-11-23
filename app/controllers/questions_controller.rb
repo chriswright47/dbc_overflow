@@ -1,19 +1,15 @@
 class QuestionsController < ApplicationController
 
   def index
-    questions = Question.all
-    hash = {}
-    questions.each { |q| hash[q] = q.vote_count }
-    sorted = hash.sort_by { |q, count| count }
-    @questions = []
-    sorted.each { |q, count| @questions << q }
-    @questions.reverse!
+    @questions = Question.all
+    @questions.sort! { |x, y| y.vote_count <=> x.vote_count }
   end
 
   def show
     @question = Question.find(params[:id])
     @user = @question.user
     @answers = @question.answers
+    @answers.sort! { |x, y| y.vote_count <=> x.vote_count }
   end
 
   def new
