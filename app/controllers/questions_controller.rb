@@ -18,9 +18,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.new(params[:question])
-    current_user.questions << question
-    redirect_to question
+    @params = params[:question].inspect
+    @question = Question.new
+    render :new
+    # question = Question.new(params[:question])
+    # current_user.questions << question
+    # redirect_to question
   end
 
   def edit

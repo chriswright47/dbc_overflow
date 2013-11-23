@@ -1,0 +1,8 @@
+<%= form.fields_for :tags do |tag_form| %>
+	<% Tag.all.each do |tag| %>
+	<div>
+		<%= tag_form.check_box tag.id %>
+		<%= tag_form.label tag.name %>
+	</div>
+	<% end %>
+<% end %>

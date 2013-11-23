@@ -17,4 +17,9 @@ FactoryGirl.define do
   factory :answer do 
     body "Answer Body"
   end
+
+  factory :tag do
+    name "Ruby"
+    description "Only the best programming language ever, no big deal"
+  end
 end
