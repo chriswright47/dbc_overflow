@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def top_users
-    User.first(10)
+    User.all.sample(10)
   end
 
   def tags
