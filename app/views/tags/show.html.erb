@@ -1,0 +1,10 @@
+<div>
+	<h1>Questions Tagged with <%= @tag.name %></h1>
+	<ul>
+		<% @questions.each do |question| %>
+			<li>
+				<p><%= link_to "#{question.title}", question %></p>
+			</li>
+		<% end %>
+	</ul>
+</div>

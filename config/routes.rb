@@ -3,6 +3,8 @@ DBCOverflow::Application.routes.draw do
   get '/' => 'questions#index'
   resources :users
 
+  resources :tags
+
   resources :questions do
     resources :answers, only: [:new, :create, :edit, :update, :destroy]
   end
