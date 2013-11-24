@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 feature "Tags" do
-	FactoryGirl.create(:ruby_tag)
-
 	scenario "can be viewed" do
 		visit '/'
 		click_link "Tags"
