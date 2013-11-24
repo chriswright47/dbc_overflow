@@ -12,6 +12,10 @@ FactoryGirl.define do
     title "Question Title"
     body "Question Body"
     user_id 1
+
+    after(:build) do |question|
+      question.taggings << FactoryGirl.build(:tagging)
+    end
   end
 
   factory :answer do 
@@ -29,5 +33,10 @@ FactoryGirl.define do
       description "Nasty curly brackets all over the place, but you'll survive"
     end
 
+  end
+
+  factory :tagging do
+    question_id 1
+    tag_id 1
   end
 end
