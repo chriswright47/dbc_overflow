@@ -1,8 +1,7 @@
 # DBC Overflow
-======
+------
 
 ### Team
-------
 * Connor McCrone
 * Chris Wright
 * Melissa Louie
