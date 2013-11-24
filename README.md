@@ -1,5 +1,4 @@
 # DBC Overflow
-------
 
 ### Team
 * Connor McCrone
@@ -7,4 +6,4 @@
 * Melissa Louie
 * Chirag Tailor
 
-[App deployed on heroku](http://protected-escarpment-2787.herokuapp.com/)
+App deployed on heroku at [http://protected-escarpment-2787.herokuapp.com/](http://protected-escarpment-2787.herokuapp.com/)
