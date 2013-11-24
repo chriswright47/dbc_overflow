@@ -1,12 +1,12 @@
-<h1>Create an Answer</h1>
+<h1 id='new_answer_form'>Create an Answer</h1>
 	<%= form_for [@question, @question.answers.build] do |f| %>
 		<div>
 			<%#= f.label :body %>
-			<%= f.text_area :body, html: { cols: 100 } %> 
+			<%= f.text_area :body, rows: 5, cols: 300 %>
 		</div>
 
 		<div>
 			<%= f.submit :value => "Submit Answer" %>
 		</div>
-		
+
 <% end %>

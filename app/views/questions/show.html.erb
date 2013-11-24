@@ -23,8 +23,8 @@
     <% end %>
 
     <% if signed_in? %>
-    <div class="lead float-left">
-      <%= link_to 'Answer Question', new_question_answer_path(@question) %><br>
+    <div class="lead">
+      <%= button_to 'Answer Question', new_question_answer_path(@question), :method => :get, :remote => true %><br>
     </div>
     <% end %>
     <% if @user == current_user %>
@@ -37,7 +37,7 @@
       <% end %>
     </div>
     <% end %>
-    <ul>
+    <ul class='answer_list'>
       <% @answers.each do |answer| %><br>
       <%= "#{pluralize(answer.vote_count, 'vote')}" %>
       <%= button_to 'upvote answer', "/answers/#{answer.id}/upvote", :method => :post %>

@@ -1,15 +1,29 @@
+require 'json'
+require 'debugger'
 class AnswersController < ApplicationController
 
 	def new
 		@question = Question.find(params[:question_id])
+		# thing = {test: 'testing'}
+		respond_to do |format|
+			format.js { (render :new, layout: false).to_json }
+		end
 	end
 
 	def create
-		question = Question.find(params[:question_id])
-		answer = Answer.new(params[:answer])
-		current_user.answers << answer
-		question.answers << answer
-		redirect_to question_path(question)
+		if request.xhr?
+			question = Question.find(params[:question_id])
+			answer = Answer.new(body: params[:body])
+			current_user.answers << answer
+			question.answers << answer
+			render :partial => 'answer', :locals => {:answer => answer}, layout: false
+		else
+			question = Question.find(params[:question_id])
+			answer = Answer.new(params[:answer])
+			current_user.answers << answer
+			question.answers << answer
+			redirect_to question_path(question)
+		end
 	end
 
 	def edit
