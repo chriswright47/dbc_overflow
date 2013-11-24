@@ -12,4 +12,12 @@ module ApplicationHelper
 	  end
   end
 
+  def top_users
+    User.first(10)
+  end
+
+  def tags
+    Tag.all
+  end
+
 end
