@@ -23,8 +23,17 @@
     <% end %>
     <%= link_to "Users", users_path %>
   </div>
+
   <div class="container">
-<%= yield %>
-</div>
+    <div class='row'>
+      <div class='span9'><%= yield %></div>
+      <div class='span3'>
+        <h2>Categories</h2>
+        <p>I would like ot render the tags index here</p>
+        <p>each tag name could be a link the tags show page</p>
+        <p>which would be a list of all existing questions with that tag</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
