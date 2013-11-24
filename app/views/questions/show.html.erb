@@ -37,6 +37,7 @@
       <% end %>
     </div>
     <% end %>
+    <div class='clear-fix'></div>
     <ul>
       <% @answers.each do |answer| %><br>
       <%= "#{pluralize(answer.vote_count, 'vote')}" %>
