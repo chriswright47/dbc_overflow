@@ -9,23 +9,46 @@
 <body>
   <div class="top-nav">
     <%= link_to "DBCOverflow", '/', :class => "home-link" %>
-	  <% if signed_in? %>
-	    <%= link_to "My Profile", user_path(current_user) %>
-	    <%= link_to "Sign Out", signout_path, method: :delete %>
-	  <% else %>
-	    <%= link_to "Sign Up", signup_path %>
-	    <%= link_to "Sign In", signin_path %>
-	  <% end %>
-  </div>
-  <div class="site-nav">
-  	<% if signed_in? %>
-	    <%= link_to 'Create Question', new_question_path %>
+    <% if signed_in? %>
+      <%= link_to "My Profile", user_path(current_user) %>
+      <%= link_to "Sign Out", signout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Sign In", signin_path %>
     <% end %>
-    <%= link_to "Tags", tags_path %>
-    <%= link_to "Users", users_path %>
   </div>
-	<div class="container">
-<%= yield %>
-</div>
+
+    <% if signed_in? %>
+    <div class="site-nav">
+      <%= link_to 'Create Question', new_question_path %>
+      </div>
+    <% end %>
+    <%#= link_to "Tags", tags_path %>
+    <%#= link_to "Users", users_path %>
+
+
+  <div class="container">
+    <div class='row'>
+      <div class='span8 offset1'><%= yield %></div>
+      <div class='span3'>
+        <h1><%= link_to 'tags', tags_path %></h1>
+        <ul>
+          <% tags.each do |tag| %>
+            <li>
+              <p><%= link_to "#{tag.name}", tag %></p>
+            </li>
+          <% end %>
+        </ul>
+        <h1><%= link_to 'users', users_path %></h1>
+        <ul>
+          <% top_users.each do |user| %>
+            <li>
+              <p><%= link_to "#{user.username}", user %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

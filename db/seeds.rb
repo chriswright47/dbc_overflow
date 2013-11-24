@@ -6,21 +6,38 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
-6.times do
-	user = User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: '1234', phase: 3)
+16.times do
+  user = User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, password: '1234', phase: 3)
 end
-
 User.create(username: "chris", email: "chris@dbc.com", password: "1234", phase: 3)
 User.create(username: "chirag", email: "chirag@dbc.com", password: "1234", phase: 3)
 User.create(username: "connor", email: "connor@dbc.com", password: "1234", phase: 3)
 User.create(username: "missy", email: "missy@dbc.com", password: "1234", phase: 3)
 
+tag_names = %w[Ruby Javascript Rails Jquery CSS HTML Sinatra Objective-C Python]
 
-
-25.times do |i|
-  question = Question.create(title: Faker::Company.bs , body: Faker::Company.catch_phrase, user_id: rand(1..10))
+tag_names.length.times do |i|
+  Tag.create(name: tag_names[i], description: "questions related to #{tag_names[i]}")
 end
 
-10.times do |i|
-	Tag.create(name: "Ruby#{i}", description: "Awesomesauce#{i}")
+# create 40 random questions with one random tag each
+40.times do |i|
+  tag = Tag.all.sample
+  question = tag.questions.create(
+                                  title: Faker::Company.bs,
+                                  body: Faker::Lorem.paragraphs(3).join("\n"),
+                                  user_id: rand(1..20)
+                                  )
 end
+
+# create 150 upvotes and 50 downvotes randomly
+200.times do |i|
+  question = Question.all.sample
+  if i % 4 == 0
+    question.votes.create(user_id: rand(1..20), value: -1)
+  else
+    question.votes.create(user_id: rand(1..20), value: 1)
+  end
+end
+
+
