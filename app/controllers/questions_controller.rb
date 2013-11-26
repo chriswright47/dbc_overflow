@@ -1,8 +1,9 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
-    @questions.sort! { |x, y| y.vote_count <=> x.vote_count }
+    @questions = Rails.cache.fetch("questions", expires_in: 1.minute) do
+      Question.all.sort! { |x, y| y.vote_count <=> x.vote_count }
+    end
   end
 
   def show
