@@ -6,4 +6,4 @@
 * Melissa Louie
 * Chirag Tailor
 
-App deployed on heroku at [http://protected-escarpment-2787.herokuapp.com/](http://protected-escarpment-2787.herokuapp.com/)
+App deployed on heroku at [http://dbc-overflow-2787.herokuapp.com/](http://dbc-overflow-2787.herokuapp.com/)
